@@ -1,0 +1,280 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cyber-cyan-rgb: 0, 240, 255;
+  --cyber-violet-rgb: 139, 92, 246;
+}
+
+.theme-cyan {
+  --cyber-cyan-rgb: 0, 240, 255;
+  --cyber-violet-rgb: 139, 92, 246;
+}
+
+.theme-green {
+  --cyber-cyan-rgb: 0, 230, 118;
+  --cyber-violet-rgb: 0, 150, 36;
+}
+
+.theme-purple {
+  --cyber-cyan-rgb: 224, 64, 251;
+  --cyber-violet-rgb: 0, 240, 255;
+}
+
+.theme-candy {
+  --cyber-cyan-rgb: 255, 128, 171;
+  --cyber-violet-rgb: 167, 255, 235;
+}
+
+/* ─── Reset & Base ────────────────────────────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  background-color: #06060e;
+  color: #e0e0f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Drag region for Electron title bar */
+.drag-region {
+  -webkit-app-region: drag;
+}
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* ─── Scrollbars Temáticas ─────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0d1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e3a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff44;
+}
+
+/* Tema Ciano / Cyber */
+.theme-cyan ::-webkit-scrollbar-track {
+  background: #0d0d1a;
+}
+.theme-cyan ::-webkit-scrollbar-thumb {
+  background: #1e1e3a;
+  border-radius: 3px;
+}
+.theme-cyan ::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff44;
+}
+
+/* Tema Verde / Terminal */
+.theme-green ::-webkit-scrollbar-track {
+  background: #060e0a;
+}
+.theme-green ::-webkit-scrollbar-thumb {
+  background: #142d1e;
+  border-radius: 3px;
+}
+.theme-green ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 230, 118, 0.4);
+}
+
+/* Tema Roxo / Espacial */
+.theme-purple ::-webkit-scrollbar-track {
+  background: #0d0612;
+}
+.theme-purple ::-webkit-scrollbar-thumb {
+  background: #221230;
+  border-radius: 3px;
+}
+.theme-purple ::-webkit-scrollbar-thumb:hover {
+  background: rgba(224, 64, 251, 0.4);
+}
+
+/* Tema Candy / Doces / Pancake */
+.theme-candy ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+.theme-candy ::-webkit-scrollbar-track {
+  background: #25150d;
+  border-radius: 10px;
+}
+.theme-candy ::-webkit-scrollbar-thumb {
+  background: #502d1b;
+  border-radius: 10px;
+  border: 2px solid #25150d;
+}
+.theme-candy ::-webkit-scrollbar-thumb:hover {
+  background: #ff80ab;
+}
+
+/* ─── Glassmorphism ───────────────────────────────────────────────────────── */
+
+.glass {
+  background: rgba(13, 13, 26, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(30, 30, 58, 0.6);
+}
+
+.glass-hover:hover {
+  background: rgba(13, 13, 26, 0.8);
+  border-color: rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.05);
+}
+
+/* ─── Terminal ────────────────────────────────────────────────────────────── */
+
+.terminal {
+  background: #06060e;
+  border: 1px solid #1e1e3a;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-y: auto;
+  padding: 16px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.terminal-line {
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.terminal-line.stdout { color: #ffffff; }
+.terminal-line.stderr { color: #ff6b6b; }
+.terminal-line.success { color: #00e676; }
+.terminal-line.warning { color: #ffea00; }
+.terminal-line.info { color: #00f0ff; }
+.terminal-line.header { color: #8b5cf6; font-weight: 600; }
+
+/* ─── Scan Line Animation ─────────────────────────────────────────────────── */
+
+.scan-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.scan-overlay::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+  box-shadow: 0 0 12px #00f0ff, 0 0 30px #00f0ff44;
+  animation: scan-line 3s linear infinite;
+}
+
+/* ─── Glow Effects ────────────────────────────────────────────────────────── */
+
+.glow-text-cyan {
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.4);
+}
+
+.glow-text-violet {
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+}
+
+.glow-border-cyan {
+  box-shadow: inset 0 0 0 1px rgba(0, 240, 255, 0.3), 0 0 15px rgba(0, 240, 255, 0.08);
+}
+
+/* ─── Toggle Switch ───────────────────────────────────────────────────────── */
+
+.toggle-switch {
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: #1e1e3a;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  border: 1px solid #2a2a4a;
+}
+
+.toggle-switch.active {
+  background: linear-gradient(135deg, #00f0ff33, #8b5cf633);
+  border-color: #00f0ff66;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #555;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.toggle-switch.active::after {
+  transform: translateX(20px);
+  background: #00f0ff;
+  box-shadow: 0 0 8px #00f0ff88;
+}
+
+/* ─── Score Gauge ─────────────────────────────────────────────────────────── */
+
+.gauge-ring {
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Badge Severity ──────────────────────────────────────────────────────── */
+
+.badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.badge-critical { background: #ff174433; color: #ff1744; border: 1px solid #ff174455; }
+.badge-high     { background: #ff910033; color: #ff9100; border: 1px solid #ff910055; }
+.badge-medium   { background: #ffea0033; color: #ffea00; border: 1px solid #ffea0055; }
+.badge-low      { background: #00e67633; color: #00e676; border: 1px solid #00e67655; }
+.badge-info     { background: #00f0ff22; color: #00f0ff; border: 1px solid #00f0ff44; }
+
+/* ─── Keyframes ───────────────────────────────────────────────────────────── */
+
+@keyframes scan-line {
+  0%   { top: -2px; }
+  100% { top: 100%; }
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: rgba(0, 240, 255, 0.2); }
+  50%      { border-color: rgba(0, 240, 255, 0.5); }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 100%; }
+}

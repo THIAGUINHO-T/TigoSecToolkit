@@ -1,0 +1,42 @@
+# Dependencias
+node_modules/
+venv/
+core/gui/dist/
+core/gui/dist-electron/
+core/gui/node_modules/
+core/gui/release/
+
+# Ferramentas baixadas pelo setup.js (Gitleaks, Nuclei, Trufflehog, k6...)
+core/tools/
+core/scripts/tools/
+core/scripts/venv/
+
+# Node.js portable baixado pelo TigoSecSetup.exe na primeira execucao
+core/runtime/
+
+# Relatorios (DADOS SENSIVEIS)
+reports/
+core/reports/
+*.html
+!core/gui/index.html
+
+# Saidas de relatorios em JSON (mas mantem package.json/package-lock.json/etc)
+reports/*.json
+core/reports/*.json
+
+# Executaveis e Pacotes de Build
+*.zip
+*.tar.gz
+*.exe
+core/gui/release/
+
+# Logs e Temporarios
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Configuracoes de IDE e chaves
+.env
+.vscode/
+.idea/

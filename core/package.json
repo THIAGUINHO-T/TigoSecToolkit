@@ -1,0 +1,30 @@
+{
+  "name": "tigo-sec-toolkit",
+  "version": "1.5.0",
+  "description": "Toolkit de auditoria de seguranca: integra Gitleaks, Trufflehog, Nuclei, k6, Snyk, Semgrep, Lighthouse, Madge, Depcheck e Observatory em uma unica suite (GUI Electron + CLI).",
+  "main": "scripts/analyze.js",
+  "scripts": {
+    "setup": "node scripts/setup.js",
+    "analyze": "node scripts/analyze.js"
+  },
+  "keywords": [
+    "security",
+    "audit",
+    "sast",
+    "dast",
+    "secrets",
+    "vulnerability-scanner"
+  ],
+  "author": "Thiago Santana <thiagosantana888@gmail.com>",
+  "license": "MIT",
+  "type": "commonjs",
+  "devDependencies": {
+    "artillery": "^2.0.31",
+    "depcheck": "^1.4.7",
+    "eslint": "^10.3.0",
+    "eslint-plugin-security": "^4.0.0",
+    "lighthouse": "^13.3.0",
+    "madge": "^8.0.0",
+    "snyk": "^1.1304.3"
+  }
+}
